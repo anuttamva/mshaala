@@ -1,0 +1,37 @@
+<section data-ng-controller="SongsController">
+    <h1>New Song</h1>
+    <form data-ng-submit="create()" novalidate>
+        <div>
+            <label for="title">Title</label>
+            <div>
+                <input type="text" data-ng-model="title" id="title" placeholder="Title" required>
+            </div>
+        </div>
+                <div>
+            <label for="lyricist">lyricist</label>
+            <div>
+                <input type="text" data-ng-model="lyricist" id="lyricist" placeholder="lyricist" required>
+            </div>
+        </div>
+         <div>
+            <label for="language">language</label>
+            <div>
+                <input type="text" data-ng-model="language" id="language" placeholder="language" required>
+            </div>
+        </div>
+         <div>
+            <label for="lyricsGenre">lyricsGenre</label>
+            <div>
+                <input type="text" data-ng-model="lyricsGenre" id="lyricsGenre" placeholder="lyricsGenre" required>
+            </div>
+        </div>
+ 
+        
+        <div>
+            <input type="submit">
+        </div>
+        <div data-ng-show="error">
+            <strong data-ng-bind="error"></strong>
+        </div>
+    </form>
+</section>

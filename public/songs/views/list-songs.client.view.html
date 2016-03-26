@@ -1,0 +1,11 @@
+<section data-ng-controller="SongsController" data-ng-init="find()">
+<h1>Songs</h1>
+<ul>
+    <li data-ng-repeat="song in songs">
+        <a data-ng-href="#!/songs/{{song._id}}" data-ng-bind="song.title"></a><br>
+    </li>
+</ul>
+<div data-ng-hide="!songs || songs.length">
+		No songs yet, why don't you <a href="/#!/songs/create">create one</a>?
+</div>
+</section>

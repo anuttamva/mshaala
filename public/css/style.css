@@ -1,0 +1,56 @@
+div#song{
+	background-color: #eeeeee;
+	padding-left: 150px;
+	padding-right: 150px;
+	padding-top: 20px;
+	position: relative;
+}
+
+div#ianfo{
+	background-color: white;
+}
+
+.compoimg{
+	width: 175px;
+	height:175px;
+	float: left;
+} 
+
+.songinfo{
+	margin-left: 170px;
+	padding:5px;
+}
+
+.md-toolbar{
+  max-height:50px;
+}
+
+.tools{
+  margin: 0px;
+  padding: 0px;
+  width: 50px;
+}
+div > p{
+  margin: 8px;
+}
+.md-button.md-fab.md-mini {
+      line-height: 4rem;
+      width: 4rem;
+      height: 4rem;
+}
+  .dividerdemoBasicUsage .face {
+  border-radius: 30px;
+  border: 1px solid #ddd;
+  width: 48px;
+  margin: 16px; 
+}
+
+.tabsdemoDynamicHeight md-content {
+  background-color: transparent !important; }
+  .tabsdemoDynamicHeight md-content md-tabs {
+    background: #f6f6f6;
+    border: 1px solid #e1e1e1; }
+    .tabsdemoDynamicHeight md-content md-tabs md-tabs-wrapper {
+      background: white; }
+  .tabsdemoDynamicHeight md-content h1:first-child {
+    margin-top: 0; }

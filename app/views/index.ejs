@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:ng="http://angularjs.org">
+<head>
+	<!-- Use the 'title' property to render a page title  -->
+	<title><%= title %></title>
+    <link rel = "stylesheet" type = "text/css" href = "/css/style.css">
+    <link rel = "stylesheet" type = "text/css" href = "/css/course_style.css">
+    <link rel = "stylesheet" type = "text/css" href="/lib/angular-material/angular-material.css">
+</head>
+<body style = "background-color:#eeeeee;">
+<!--    <h2>Welcome to mShaala</h2>-->
+	<!-- Render AngularJS views  -->
+	<div ng-view></div>
+
+	<!-- Render the user object -->
+	<script type="text/javascript">
+		window.user = <%- user || 'null' %>;
+	</script>
+	
+    
+    
+    
+	<!-- Load local libraries -->
+	<script type="text/javascript" src="/lib/angular/angular.js"></script>
+    
+    <script type="text/javascript" src = "/lib/angular-material/angular-material.js"></script>
+    <script type="text/javascript" src = "/lib/angular-animate/angular-animate.js"></script>
+    <script type="text/javascript" src = "/lib/angular-aria/angular-aria.js"></script>
+    <script type="text/javascript" src = "/lib/angular-messages/angular-messages.js"></script>
+    <script type="text/javascript" src = "/lib/angular-material/node_modules/angular-material-icons/angular-material-icons.min.js"></script>
+    
+	<script type="text/javascript" src="/lib/angular-route/angular-route.js"></script>
+    <script type="text/javascript" src="/lib/angular-resource/angular-resource.js"></script>
+
+    <!-- Load the song module -->
+    <script type="text/javascript" src="/songs/songs.client.module.js"></script>
+    <script type="text/javascript" src="/songs/controllers/songs.client.controller.js"></script>
+    <script type="text/javascript" src="/songs/services/songs.client.service.js"></script>
+    <script type="text/javascript" src="/songs/config/songs.client.routes.js"></script>
+
+    <!-- Load the course module -->
+    <script type="text/javascript" src="/courses/courses.client.module.js"></script>
+    <script type="text/javascript" src="/courses/controllers/courses.client.controller.js"></script>
+    <script type="text/javascript" src="/courses/services/courses.client.service.js"></script>
+    <script type="text/javascript" src="/courses/config/courses.client.routes.js"></script>
+
+    
+    <!-- Load the example module -->
+	<script type="text/javascript" src="/example/example.client.module.js"></script>
+	<script type="text/javascript" src="/example/controllers/example.client.controller.js"></script>
+	<script type="text/javascript" src="/example/config/example.client.routes.js"></script>
+
+	<!-- Load the users module -->
+	<script type="text/javascript" src="/users/users.client.module.js"></script>
+	<script type="text/javascript" src="/users/services/authentication.client.service.js"></script>
+
+	<!-- Bootstrap AngularJS application -->
+	<script type="text/javascript" src="/application.js"></script>
+</body>
+</html>
