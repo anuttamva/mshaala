@@ -1,5 +1,5 @@
 //extra function present
-angular.module('songs').controller('SongsController', ['$scope','$routeParams', '$location', 'Authentication', 'Songs',function($scope, $routeParams, $location, Authentication, Songs)
+angular.module('songs').controller('SongsController', ['$scope','$routeParams', '$location', 'Authentication', 'Songs','ngAudio',function($scope, $routeParams, $location, Authentication, Songs, ngAudio)
 {
     $scope.authentication = Authentication;
     
@@ -59,49 +59,29 @@ angular.module('songs').controller('SongsController', ['$scope','$routeParams', 
                 startMatra: 1,
                 tuneComposer: "Purandara Dasaru",
                 tuneLyrics: {
-                  stanzaCount: 4,
+                  stanzaCount: 1,
                   unicodeLanguage: "Kannada",
+                  beatsPerCycle: 1,
+                  origTempo: 120,
+                  newTempo: 120,
+                  nlaghu: 2,
+                  ndrutha: 4,
+                  practiceLevel: 0,
                   stanzas: [
                     {
                       stanzaNumber: 1,
                       name: "Pallavi",
-                      lines: [
-                        {lineNumber: 1, text:"yy", midiTune: "0xFFFFFFFFFFF"}
-                        ,{lineNumber: 2,text:"bs", midiTune: "0xFFFFFFFFFFF"}
-                        ,{lineNumber: 3, text:"lam", midiTune: "0xFFFFFFFFFFF"}
-                      ]
-                    },
-                    {
-                      stanzaNumber: 2,
-                      name: "Charana",
-                      lines: [
-                        {lineNumber: 1,text:"ll",midiTune: "0xFFFFFFFFFFF"},
-                        {lineNumber: 2, text:"mm", midiTune: "0xFFFFFFFFFFF"},
-                        {lineNumber: 3, text:"nn", midiTune: "0xFFFFFFFFFFF"},
-                        {lineNumber: 4, text:"oo", midiTune: "0xFFFFFFFFFFF"},
-                        {lineNumber: 5, text:"pp", midiTune: "0xFFFFFFFFFFF"}
-                      ]
-                    },
-                    {
-                      stanzaNumber: 3,
-                      name: "Charana",
-                      lines: [
-                        {lineNumber: 1,text:"qq",midiTune: "0xFFFFFFFFFFF"},
-                        {lineNumber: 2,text:"rr",midiTune: "0xFFFFFFFF"},
-                        {lineNumber: 3, text:"ss", midiTune: "0xFFFFFFFFFFF"},
-                        {lineNumber: 4, text:"tt", midiTune: "0xFFFFFFFFFFF"},
-                        {lineNumber: 5, text:"uu", midiTune: "0xFFFFFFFFFFF"}
-                      ]
-                    },
-                    {
-                      stanzaNumber: 4,
-                      name: "Charana",
-                      lines: [
-                        {lineNumber: 1, text:"vv", midiTune: "0xFFFFFFFFFFF"},
-                        {lineNumber: 2,text:"ww",midiTune: "0xFFFFFFFF"},
-                        {lineNumber: 3, text:"xx", midiTune: "0xFFFFFFFFFFF"},
-                        {lineNumber: 4, text:"yy", midiTune: "0xFFFFFFFFFFF"},
-                        {lineNumber: 5, text:"zz", midiTune: "0xFFFFFFFFFFF"}
+                      audioMeta: [
+                        {
+                          cycleIdx: 1,
+                          beats: [
+                            {
+                              idx: 1, 
+                              lyric: "",
+                              note: ""
+                            }
+                          ]
+                        }  
                       ]
                     }
                   ]
@@ -146,6 +126,312 @@ angular.module('songs').controller('SongsController', ['$scope','$routeParams', 
                   }
                 ]
               }
+            ],
+            "learningPlanMeta": [
+              {
+                "stanzaIdx":1, "nCycles":6,
+                "practiceCharts": [
+                  {
+                    "level": 0,
+                    "nSegments": 29,
+                    "practiceSegments": [
+                      {
+                        "idx":1, "isBlank": true,
+                        "sl":1, "sb":1,
+                        "el":1, "eb":8
+                      },
+                      {
+                        "idx":2, "isBlank": false,
+                        "sl":1, "sb":9,
+                        "el":1, "eb":16
+                      },
+                      {
+                        "idx":3, "isBlank": false,
+                        "sl":2, "sb":1,
+                        "el":2, "eb":8
+                      },
+                      {
+                        "idx":4, "isBlank": false,
+                        "sl":1, "sb":9,
+                        "el":1, "eb":16
+                      },
+                      {
+                        "idx":5, "isBlank": true,
+                        "sl":2, "sb":1,
+                        "el":2, "eb":8
+                      },
+                      {
+                        "idx":6, "isBlank": false,
+                        "sl":3, "sb":9,
+                        "el":3, "eb":16
+                      },
+                      {
+                        "idx":7, "isBlank": false,
+                        "sl":4, "sb":1,
+                        "el":4, "eb":8
+                      },
+                      {
+                        "idx":8, "isBlank": false,
+                        "sl":3, "sb":9,
+                        "el":3, "eb":16
+                      },
+                      {
+                        "idx":9, "isBlank": false,
+                        "sl":4, "sb":1,
+                        "el":4, "eb":8
+                      },
+                      {
+                        "idx":10, "isBlank": false,
+                        "sl":1, "sb":9,
+                        "el":1, "eb":16
+                      },
+                      {
+                        "idx":11, "isBlank": true,
+                        "sl":2, "sb":1,
+                        "el":2, "eb":8
+                      },
+                      {
+                        "idx":12, "isBlank": false,
+                        "sl":3, "sb":9,
+                        "el":3, "eb":16
+                      },
+                      {
+                        "idx":13, "isBlank": false,
+                        "sl":7, "sb":1,
+                        "el":7, "eb":8
+                      }
+                    ]
+                  },
+                  {
+                    "level": 1,
+                    "nSegments": 7,
+                    "practiceSegments": [
+                      {
+                        "idx":1, "isBlank": true,
+                        "sl":1, "sb":1,
+                        "el":1, "eb":8
+                      },
+                      {
+                        "idx":2, "isBlank": false,
+                        "sl":1, "sb":9,
+                        "el":2, "eb":8
+                      },
+                      {
+                        "idx":3, "isBlank": false,
+                        "sl":1, "sb":9,
+                        "el":2, "eb":8
+                      },
+                      {
+                        "idx":4, "isBlank": false,
+                        "sl":3, "sb":9,
+                        "el":4, "eb":8
+                      },
+                      {
+                        "idx":5, "isBlank": false,
+                        "sl":3, "sb":9,
+                        "el":4, "eb":8
+                      },
+                      {
+                        "idx":6, "isBlank": false,
+                        "sl":1, "sb":9,
+                        "el":2, "eb":8
+                      },
+                      {
+                        "idx":7, "isBlank": false,
+                        "sl":1, "sb":9,
+                        "el":1, "eb":16
+                      }
+
+                    ]
+                  }
+                  
+                ]
+              } ,
+              {
+                "stanzaIdx":2, "nCycles":5,
+                "practiceCharts": [
+                  {
+                    "level": 1,
+                    "nSegments": 11,
+                    "practiceSegments": [
+                      {
+                        "idx":1, "isBlank": false,
+                        "sl":7, "sb":9,
+                        "el":7, "eb":16
+                      },
+                      {
+                        "idx":2, "isBlank": false,
+                        "sl":7, "sb":1,
+                        "el":7, "eb":8
+                      },
+                      {
+                        "idx":3, "isBlank": false,
+                        "sl":7, "sb":9,
+                        "el":7, "eb":16
+                      },
+                      {
+                        "idx":4, "isBlank": false,
+                        "sl":9, "sb":1,
+                        "el":9, "eb":8
+                      },
+                      {
+                        "idx":5, "isBlank": false,
+                        "sl":9, "sb":9,
+                        "el":9, "eb":16
+                      },
+                      {
+                        "idx":6, "isBlank": false,
+                        "sl":9, "sb":1,
+                        "el":9, "eb":8
+                      },
+                      {
+                        "idx":7, "isBlank": false,
+                        "sl":9, "sb":9,
+                        "el":9, "eb":16
+                      },
+                      {
+                        "idx":8, "isBlank": false,
+                        "sl":11, "sb":1,
+                        "el":11, "eb":8
+                      },
+                      {
+                        "idx":9, "isBlank": false,
+                        "sl":11, "sb":1,
+                        "el":11, "eb":8
+                      },
+                      {
+                        "idx":10, "isBlank": false,
+                        "sl":11, "sb":1,
+                        "el":11, "eb":8
+                      },
+                      {
+                        "idx":11, "isBlank": false,
+                        "sl":1, "sb":9,
+                        "el":1, "eb":16
+                      }
+                        
+                    ]
+                    
+                  },
+                  {
+                    "level": 1,
+                    "nSegments": 7,
+                    "practiceSegments": [
+                      {
+                        "idx":1, "isBlank": false,
+                        "sl":7, "sb":1,
+                        "el":7, "eb":16
+                      },
+                      {
+                        "idx":2, "isBlank": false,
+                        "sl":7, "sb":1,
+                        "el":7, "eb":16
+                      },
+                      {
+                        "idx":3, "isBlank": false,
+                        "sl":9, "sb":1,
+                        "el":9, "eb":16
+                      },
+                      {
+                        "idx":4, "isBlank": false,
+                        "sl":9, "sb":1,
+                        "el":9, "eb":16
+                      },
+                      {
+                        "idx":5, "isBlank": false,
+                        "sl":11, "sb":1,
+                        "el":11, "eb":8
+                      },
+                      {
+                        "idx":6, "isBlank": false,
+                        "sl":11, "sb":1,
+                        "el":11, "eb":8
+                      },
+                      {
+                        "idx":7, "isBlank": false,
+                        "sl":11, "sb":1,
+                        "el":11, "eb":8
+                      }
+                        
+                    ]
+                  }
+                ]
+              },
+              {
+                "stanzaIdx": 3, "nCycles": 2,
+                "practiceCharts": [
+                  {
+                    "level": 0, "nSegments": 5,
+                    "practiceSegments": [
+                      {
+                        "idx":1, "isBlank": false,
+                        "sl":2, "sb":1,
+                        "el":2, "eb":8
+                      },
+                      {
+                        "idx":2, "isBlank": false,
+                        "sl":1, "sb":9,
+                        "el":1, "eb":16
+                      },
+                      {
+                        "idx":3, "isBlank": false,
+                        "sl":1, "sb":9,
+                        "el":1, "eb":16
+                      },
+                      {
+                        "idx":4, "isBlank": false,
+                        "sl":1, "sb":1,
+                        "el":1, "eb":16
+                      },
+                      {
+                        "idx":5, "isBlank": false,
+                        "sl":2, "sb":1,
+                        "el":2, "eb":8
+                      }
+
+                      
+                    ]
+                    
+                  } ,
+                  {
+                    "level": 1,
+                    "nSegments": 6,
+                    "practiceSegments": [
+                      {
+                        "idx":1, "isBlank": false,
+                        "sl":1, "sb":9,
+                        "el":1, "eb":16
+                      },  
+                      {
+                        "idx":2, "isBlank": false,
+                        "sl":2, "sb":1,
+                        "el":2, "eb":8
+                      },  
+                      {
+                        "idx":3, "isBlank": false,
+                        "sl":1, "sb":9,
+                        "el":1, "eb":16
+                      },  
+                      {
+                        "idx":4, "isBlank": false,
+                        "sl":1, "sb":9,
+                        "el":1, "eb":16
+                      },  
+                      {
+                        "idx":5, "isBlank": false,
+                        "sl":1, "sb":9,
+                        "el":1, "eb":16
+                      },  
+                      {
+                        "idx":6, "isBlank": false,
+                        "sl":2, "sb":1,
+                        "el":2, "eb":8
+                      }  
+                    ]
+                    
+                  }
+                ]
+              }
             ]
         });
         song.$save(function(response) {
@@ -154,6 +440,7 @@ angular.module('songs').controller('SongsController', ['$scope','$routeParams', 
             $scope.error = errorResponse.data.message;
         });
     };
+    
     
     $scope.find = function() {
         $scope.songs = Songs.query();
@@ -167,6 +454,7 @@ angular.module('songs').controller('SongsController', ['$scope','$routeParams', 
         return {compoimg: true};
     };
     $scope.imgpath = "/img/purandaradaasu.jpe";
+    $scope.audio = ngAudio.load('/audio/Cheerleader.mp3');
 }])
 .config(function($mdThemingProvider) {
   $mdThemingProvider.theme('default')

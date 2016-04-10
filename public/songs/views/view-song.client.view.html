@@ -3,7 +3,7 @@
       <md-card>
         <div layout = "row">
           <div flex = "18" >
-            <img ng-src="img/purandaradaasu.jpe" class="compoimg">
+            <img ng-src="sc.imgpath" class="compoimg">
           </div>
           <div flex layout = "column">
             <div flex = "5" layout = "row" >
@@ -86,7 +86,7 @@
                       <div class="md-toolbar-tools" >
                         <h2 class="md-toolbar-tools" style= "color:white;" layout-align="start center">  {{stanz.name | uppercase}}<span  ng-if="$index > 0"> - {{stanz.stanzaNumber - 1}}</span> </h2>
                       </div>
-                    </md-toolbar>
+9                    </md-toolbar>
                       <!-- <p style="padding-right:10px;padding-left:15px;">This a popular song written by Sri Purandaradasa in praise of Lord Ganesha</p> -->
                      
                       <md-list-item  ng-repeat="line in stanz.lines" >
@@ -236,7 +236,22 @@
                           </md-button>
                         </section>
                       </md-toolbar>
+                      <md-card-content>
+                        <table>
+                          <head>
+                            <tr>
+                              <th>दुत</th>
+                              <th>लघु</th>
+                            </tr>
+                            <tr ng-repeat="">
+                              <th></th>
+                              <th></th>
+                            </tr>
 
+                          </head>
+
+                        </table>
+                      </md-card-content>
                       //add here
                     </div>
                   </div>

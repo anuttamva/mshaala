@@ -4,10 +4,10 @@ angular.module('courses').controller('CoursesController', ['$scope','$routeParam
     $scope.authentication = Authentication;
     
     $scope.create = function() {
-        var course = new Course(
+        var course = new Courses(
            {
-	"organization" : {
-		"name" : "Karnataka State Board of Secondary Education",
+	organization : {
+		name : this.organization.name,
 		"degrees" : [
 			{
 				"name" : "Junior Grade in Classical Music",

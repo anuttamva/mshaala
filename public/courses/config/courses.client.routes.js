@@ -1,6 +1,7 @@
 // Invoke 'strict' JavaScript mode
 'use strict';
 
+
 angular.module('courses').config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.

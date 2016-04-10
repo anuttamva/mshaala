@@ -1,1 +1,1 @@
-angular.module('songs', ['ngMaterial','ngMdIcons']);
+angular.module('songs', ['ngMaterial','ngMdIcons', 'ngAudio']);

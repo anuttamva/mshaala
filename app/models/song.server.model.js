@@ -14,8 +14,7 @@ var SongSchema = new Schema({
 		  stanzaNumber: Number,
 		  name: String,
 		  lines: [
-			{lineNumber: Number, text:String}
-			
+			{lineNumber: Number, text:String}			
 		  ]
 		}
 		
@@ -33,21 +32,33 @@ var SongSchema = new Schema({
 		startMatra: Number,
 		tuneComposer: String,
 		tuneLyrics: {
-		  stanzaCount: Number,
-		  unicodeLanguage: String,
-		  stanzas: [
-			{
-			  stanzaNumber: Number,
-			  name: String,
-			  lines: [
-				{lineNumber: Number
-				,text:String
-				,midiTune: String}
-				]
-			}
-			
-		  ]
-		},
+            stanzaCount: Number,
+            unicodeLanguage: String,
+            beatsPerCycle: Number,
+            origTempo: Number,
+            newTempo: Number,
+            practiceLevel: Number,
+            nlaghu: Number,
+            ndrutha: Number,
+            stanzas: [
+                {
+                  stanzaNumber: Number,
+                  name: String,
+                  audioMeta: [
+                    {
+                      cycleIdx : Number,
+                      beats : [
+                        {
+                          idx : Number, 
+                          lyric : String,
+                          note : String
+                        } 
+                      ]
+                    }
+                  ]
+                }
+            ]
+        },
 		bgms: [
 		  {
 			composer: String,
@@ -68,6 +79,24 @@ var SongSchema = new Schema({
             }
         ]
 	  }
-	]
+	],
+  learningPlanMeta: [
+    {
+      stanzaIdx: Number, nCycles: Number,
+      practiceCharts: [
+        {
+          level: Number,
+          nSegments: Number,
+          practiceSegments: [
+            {
+              idx: Number, isBlank: Boolean,
+              sl: Number, sb: Number,
+              el: Number, eb: Number
+            }
+          ]
+        }
+      ]
+    }
+  ]
   });
 mongoose.model('Song', SongSchema);
