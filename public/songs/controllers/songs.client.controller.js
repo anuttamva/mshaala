@@ -4,436 +4,7 @@ angular.module('songs').controller('SongsController', ['$scope','$routeParams', 
     $scope.authentication = Authentication;
     
     $scope.create = function() {
-        var song = new Songs({
-            title: this.title,
-            lyricist: this.lyricist,
-            language: this.language,
-            lyricsGenre: this.lyricsGenre,
-            baseLyrics: {
-                stanzaCount: 4,
-              unicodeLanguage: "Kannada"
-              ,stanzas: [
-                {
-                  stanzaNumber: 1,
-                  name: "Pallavi",
-                  lines: [
-                    {lineNumber: 1, text:"aa"},
-                    {lineNumber: 2, text:"bb"}
-                  ]
-                },
-                {
-                  stanzaNumber: 2,
-                  name: "Charana",
-                  lines: [
-                    {lineNumber: 1, text:"cc"},
-                    {lineNumber: 2, text:"dd"}
-                  ]
-                },
-                {
-                  stanzaNumber: 3,
-                  name: "Charana",
-                  lines: [
-                    {lineNumber: 1, text:"ee"},
-                    {lineNumber: 2, text:"ff"}
-                  ]
-                },
-                {
-                  stanzaNumber: 4,
-                  name: "Charana",
-                  lines: [
-                    {lineNumber: 1, text:"gg"},
-                    {lineNumber: 2, text:"hh"}
-                  ]
-                }
-              ]
-            },
-            tunes: [
-              {
-                tuneGenre: "Karnatic Devotional",
-                raaga: "Malahari",
-                taala: "Roopaka",
-                laya : "madhyama",
-                genre : "Carnatic Classical Music",
-                baseTempo: 120,
-                baseShruthi: "C4",
-                startMatra: 1,
-                tuneComposer: "Purandara Dasaru",
-                tuneLyrics: {
-                  stanzaCount: 1,
-                  unicodeLanguage: "Kannada",
-                  beatsPerCycle: 1,
-                  origTempo: 120,
-                  newTempo: 120,
-                  nlaghu: 2,
-                  ndrutha: 4,
-                  practiceLevel: 0,
-                  stanzas: [
-                    {
-                      stanzaNumber: 1,
-                      name: "Pallavi",
-                      audioMeta: [
-                        {
-                          cycleIdx: 1,
-                          beats: [
-                            {
-                              idx: 1, 
-                              lyric: "",
-                              note: ""
-                            }
-                          ]
-                        }  
-                      ]
-                    }
-                  ]
-                },
-                bgms: [
-                  {
-                    composer: "B. J. Bharath",
-                    tracks: [ 
-                      { trackNumber: 1, instrument: "Tanpura" },
-                      { trackNumber: 2, instrument: "Tabla" },
-                      { trackNumber: 3, instrument: "Harmonium" },
-                      { trackNumber: 4, instrument: "Flute" },
-                      { trackNumber: 5, instrument: "Sitar" }
-                    ]
-                  },
-                  {
-                    composer: "Rajan Nagendra",
-                    tracks: [ 
-                      { trackNumber: 1, instrument: "Tanpura" },
-                      { trackNumber: 2, instrument: "Mridangam" },
-                      { trackNumber: 3, instrument: "Violin" },
-                      { trackNumber: 4, instrument: "Ghatam" }
-                    ]
-                  }					
-                ],
-                recordings : [
-                  {
-                    singer : "Stuthi Bhat",
-                    raaga : "adf",
-                    taala : "adsf",
-                    lyricist : "asdf",
-                    tuneCompo : "asdf",
-                    shruti : "asdf"
-                  },
-                  {
-                    singer : "Vamsi Krishna",
-                    raaga : "kkk",
-                    taala : "llll",
-                    lyricist :"mmmm",
-                    tuneCompo :"hlmk",
-                    shruti : "klmn"
-                  }
-                ]
-              }
-            ],
-            "learningPlanMeta": [
-              {
-                "stanzaIdx":1, "nCycles":6,
-                "practiceCharts": [
-                  {
-                    "level": 0,
-                    "nSegments": 29,
-                    "practiceSegments": [
-                      {
-                        "idx":1, "isBlank": true,
-                        "sl":1, "sb":1,
-                        "el":1, "eb":8
-                      },
-                      {
-                        "idx":2, "isBlank": false,
-                        "sl":1, "sb":9,
-                        "el":1, "eb":16
-                      },
-                      {
-                        "idx":3, "isBlank": false,
-                        "sl":2, "sb":1,
-                        "el":2, "eb":8
-                      },
-                      {
-                        "idx":4, "isBlank": false,
-                        "sl":1, "sb":9,
-                        "el":1, "eb":16
-                      },
-                      {
-                        "idx":5, "isBlank": true,
-                        "sl":2, "sb":1,
-                        "el":2, "eb":8
-                      },
-                      {
-                        "idx":6, "isBlank": false,
-                        "sl":3, "sb":9,
-                        "el":3, "eb":16
-                      },
-                      {
-                        "idx":7, "isBlank": false,
-                        "sl":4, "sb":1,
-                        "el":4, "eb":8
-                      },
-                      {
-                        "idx":8, "isBlank": false,
-                        "sl":3, "sb":9,
-                        "el":3, "eb":16
-                      },
-                      {
-                        "idx":9, "isBlank": false,
-                        "sl":4, "sb":1,
-                        "el":4, "eb":8
-                      },
-                      {
-                        "idx":10, "isBlank": false,
-                        "sl":1, "sb":9,
-                        "el":1, "eb":16
-                      },
-                      {
-                        "idx":11, "isBlank": true,
-                        "sl":2, "sb":1,
-                        "el":2, "eb":8
-                      },
-                      {
-                        "idx":12, "isBlank": false,
-                        "sl":3, "sb":9,
-                        "el":3, "eb":16
-                      },
-                      {
-                        "idx":13, "isBlank": false,
-                        "sl":7, "sb":1,
-                        "el":7, "eb":8
-                      }
-                    ]
-                  },
-                  {
-                    "level": 1,
-                    "nSegments": 7,
-                    "practiceSegments": [
-                      {
-                        "idx":1, "isBlank": true,
-                        "sl":1, "sb":1,
-                        "el":1, "eb":8
-                      },
-                      {
-                        "idx":2, "isBlank": false,
-                        "sl":1, "sb":9,
-                        "el":2, "eb":8
-                      },
-                      {
-                        "idx":3, "isBlank": false,
-                        "sl":1, "sb":9,
-                        "el":2, "eb":8
-                      },
-                      {
-                        "idx":4, "isBlank": false,
-                        "sl":3, "sb":9,
-                        "el":4, "eb":8
-                      },
-                      {
-                        "idx":5, "isBlank": false,
-                        "sl":3, "sb":9,
-                        "el":4, "eb":8
-                      },
-                      {
-                        "idx":6, "isBlank": false,
-                        "sl":1, "sb":9,
-                        "el":2, "eb":8
-                      },
-                      {
-                        "idx":7, "isBlank": false,
-                        "sl":1, "sb":9,
-                        "el":1, "eb":16
-                      }
-
-                    ]
-                  }
-                  
-                ]
-              } ,
-              {
-                "stanzaIdx":2, "nCycles":5,
-                "practiceCharts": [
-                  {
-                    "level": 1,
-                    "nSegments": 11,
-                    "practiceSegments": [
-                      {
-                        "idx":1, "isBlank": false,
-                        "sl":7, "sb":9,
-                        "el":7, "eb":16
-                      },
-                      {
-                        "idx":2, "isBlank": false,
-                        "sl":7, "sb":1,
-                        "el":7, "eb":8
-                      },
-                      {
-                        "idx":3, "isBlank": false,
-                        "sl":7, "sb":9,
-                        "el":7, "eb":16
-                      },
-                      {
-                        "idx":4, "isBlank": false,
-                        "sl":9, "sb":1,
-                        "el":9, "eb":8
-                      },
-                      {
-                        "idx":5, "isBlank": false,
-                        "sl":9, "sb":9,
-                        "el":9, "eb":16
-                      },
-                      {
-                        "idx":6, "isBlank": false,
-                        "sl":9, "sb":1,
-                        "el":9, "eb":8
-                      },
-                      {
-                        "idx":7, "isBlank": false,
-                        "sl":9, "sb":9,
-                        "el":9, "eb":16
-                      },
-                      {
-                        "idx":8, "isBlank": false,
-                        "sl":11, "sb":1,
-                        "el":11, "eb":8
-                      },
-                      {
-                        "idx":9, "isBlank": false,
-                        "sl":11, "sb":1,
-                        "el":11, "eb":8
-                      },
-                      {
-                        "idx":10, "isBlank": false,
-                        "sl":11, "sb":1,
-                        "el":11, "eb":8
-                      },
-                      {
-                        "idx":11, "isBlank": false,
-                        "sl":1, "sb":9,
-                        "el":1, "eb":16
-                      }
-                        
-                    ]
-                    
-                  },
-                  {
-                    "level": 1,
-                    "nSegments": 7,
-                    "practiceSegments": [
-                      {
-                        "idx":1, "isBlank": false,
-                        "sl":7, "sb":1,
-                        "el":7, "eb":16
-                      },
-                      {
-                        "idx":2, "isBlank": false,
-                        "sl":7, "sb":1,
-                        "el":7, "eb":16
-                      },
-                      {
-                        "idx":3, "isBlank": false,
-                        "sl":9, "sb":1,
-                        "el":9, "eb":16
-                      },
-                      {
-                        "idx":4, "isBlank": false,
-                        "sl":9, "sb":1,
-                        "el":9, "eb":16
-                      },
-                      {
-                        "idx":5, "isBlank": false,
-                        "sl":11, "sb":1,
-                        "el":11, "eb":8
-                      },
-                      {
-                        "idx":6, "isBlank": false,
-                        "sl":11, "sb":1,
-                        "el":11, "eb":8
-                      },
-                      {
-                        "idx":7, "isBlank": false,
-                        "sl":11, "sb":1,
-                        "el":11, "eb":8
-                      }
-                        
-                    ]
-                  }
-                ]
-              },
-              {
-                "stanzaIdx": 3, "nCycles": 2,
-                "practiceCharts": [
-                  {
-                    "level": 0, "nSegments": 5,
-                    "practiceSegments": [
-                      {
-                        "idx":1, "isBlank": false,
-                        "sl":2, "sb":1,
-                        "el":2, "eb":8
-                      },
-                      {
-                        "idx":2, "isBlank": false,
-                        "sl":1, "sb":9,
-                        "el":1, "eb":16
-                      },
-                      {
-                        "idx":3, "isBlank": false,
-                        "sl":1, "sb":9,
-                        "el":1, "eb":16
-                      },
-                      {
-                        "idx":4, "isBlank": false,
-                        "sl":1, "sb":1,
-                        "el":1, "eb":16
-                      },
-                      {
-                        "idx":5, "isBlank": false,
-                        "sl":2, "sb":1,
-                        "el":2, "eb":8
-                      }
-
-                      
-                    ]
-                    
-                  } ,
-                  {
-                    "level": 1,
-                    "nSegments": 6,
-                    "practiceSegments": [
-                      {
-                        "idx":1, "isBlank": false,
-                        "sl":1, "sb":9,
-                        "el":1, "eb":16
-                      },  
-                      {
-                        "idx":2, "isBlank": false,
-                        "sl":2, "sb":1,
-                        "el":2, "eb":8
-                      },  
-                      {
-                        "idx":3, "isBlank": false,
-                        "sl":1, "sb":9,
-                        "el":1, "eb":16
-                      },  
-                      {
-                        "idx":4, "isBlank": false,
-                        "sl":1, "sb":9,
-                        "el":1, "eb":16
-                      },  
-                      {
-                        "idx":5, "isBlank": false,
-                        "sl":1, "sb":9,
-                        "el":1, "eb":16
-                      },  
-                      {
-                        "idx":6, "isBlank": false,
-                        "sl":2, "sb":1,
-                        "el":2, "eb":8
-                      }  
-                    ]
-                    
-                  }
-                ]
-              }
-            ]
-        });
+        var song = new Songs($scope.sng);
         song.$save(function(response) {
             $location.path('songs/' + response._id);
         }, function(errorResponse) {
@@ -441,7 +12,26 @@ angular.module('songs').controller('SongsController', ['$scope','$routeParams', 
         });
     };
     
-    
+    $scope.sng = {	
+                    title : this.title,
+                    lyricist : this.lyricist,
+                    language : this.language,
+                    lyricsGenre : this.lyricsGenre,
+                    baseLyrics : 
+                    {
+                        stanzaCount: 0,
+                        unicodeLanguage: "Sanskrit",
+                        stanzas: [
+                        ]
+                    },
+                    tunes: [
+                    ],
+                  learningPlanMeta: [
+                    
+                  ]
+                };
+
+        
     $scope.find = function() {
         $scope.songs = Songs.query();
     };
@@ -453,8 +43,241 @@ angular.module('songs').controller('SongsController', ['$scope','$routeParams', 
     $scope.getImageClass = function(){
         return {compoimg: true};
     };
+    $scope.addStanza = function(){
+        $scope.song.newStanza = true;
+        $scope.sng.baseLyrics.stanzaCount += 1;
+        $scope.sng.baseLyrics.stanzas.push({
+                  stanzaNumber: $scope.sng.baseLyrics.stanzaCount,
+                  name: "",
+                  lines: [
+                  ]
+                });
+    };
+    $scope.addLine = function(stzNo){
+        $scope.song.newLine = true;
+        $scope.sng.baseLyrics.stanzas[stzNo].lines.push(
+            {lineNumber: $scope.sng.baseLyrics.stanzas[stzNo].lines.length + 1 , text:"", meaning:""}
+        );
+    };
+    
+    
+    $scope.addTune = function(){
+        $scope.sng.tunes.push(
+            {
+                tuneComposer: "",
+                genre : "",
+                compositionType : "",
+                raaga: "",
+                taala: "",
+                laya : "",
+                baseTempo:null,
+                baseShruthi: "",
+                startMatra: null,
+                tuneLyrics: {
+                    stanzaCount: null,
+                    unicodeLanguage: "",
+                    beatsPerCycle: null,
+                    origTempo: null,
+                    newTempo: null,
+                    practiceLevel: 0,
+                    nlaghu:null,
+                    ndrutha: null,
+                    stanzas: [ ]
+                },
+                bgms: [					
+                ],
+                recordings : [ ]
+              }
+        )   
+    };
+    
+    $scope.addTuneStanza = function(tuneNo){
+        $scope.sng.tunes[tuneNo].tuneLyrics.beatsPerCycle = $scope.sng.tunes[tuneNo].tuneLyrics.nlaghu + $scope.sng.tunes[tuneNo].tuneLyrics.ndrutha;
+        $scope.song.newTune.newStanza = true;
+        $scope.sng.tunes[tuneNo].tuneLyrics.stanzas.push(
+            {
+              stanzaNumber: $scope.sng.tunes[tuneNo].tuneLyrics.stanzas.length + 1,
+              name: "",
+              audioMeta: [
+                
+              ]
+            }
+        );
+    };
+    
+    $scope.addTuneLine = function(tuneNo, stzNo){
+        $scope.song.newTune.newLine = true;
+        $scope.sng.tunes[tuneNo].tuneLyrics.stanzas[stzNo].audioMeta.push(
+            {
+              cycleIdx : 1,
+              beats : [  
+              ]
+            }
+        );
+        for(i=0;i<$scope.sng.tunes[tuneNo].tuneLyrics.beatsPerCycle;i++){
+            console.log(i);
+            $scope.sng.tunes[tuneNo].tuneLyrics.stanzas[stzNo].audioMeta[$scope.sng.tunes[tuneNo].tuneLyrics.stanzas[stzNo].audioMeta.length-1].beats.push(
+                {
+                  idx : i+1, 
+                  lyric : "",
+                  note : ""
+                }
+            );
+        }
+    };
+    
+    $scope.addBgm = function(tuneNo){
+        $scope.sng.tunes[tuneNo].bgms.push(
+          {
+            composer: "",
+            tracks: [ ]
+          }
+        );
+    };
+    
+    $scope.addBgmInst = function(tuneNo,bgmNo){
+        $scope.sng.tunes[tuneNo].bgms[bgmNo].tracks.push(
+            { trackNumber: $scope.sng.tunes[tuneNo].bgms[bgmNo].tracks.length+1, instrument: "" }
+        );
+    };
+    $scope.addRec = function(tuneNo){
+        $scope.song.newTune.newRec = true;
+        $scope.sng.tunes[tuneNo].recordings.push(
+            {
+                singer : "",
+                raaga : "",
+                taala : "",
+                lyricist : "",
+                tuneCompo : "",
+                shruti : ""  
+            }
+        );
+    };
+    
+    
+    $scope.addLearningPlan = function(){
+        $scope.song.learnPlan = true;
+        $scope.song.plan = false;
+        for(i=0;i<$scope.sng.baseLyrics.stanzas.length;i++){
+            $scope.sng.learningPlanMeta.push(
+                {
+                    stanzaIdx: i+1, nCycles: null,
+                    practiceCharts: [ ]
+                }
+            );
+        }
+            console.log("dfdf");
+    }
+    
+    $scope.addNewLevel = function(stnzNo){
+        $scope.song.newLevel = true;
+//        $scope.sng.learningPlanMeta[stnzNo].stanzaIdx = stnzNo;
+//        $scope.sng.learningPlanMeta[stnzNo].nCycles = $scope.sng.tunes[tuneNo].tuneLyrics.stanzas[stzNo].audioMeta.length;
+        $scope.sng.learningPlanMeta[stnzNo].practiceCharts.push(
+
+                {
+                  level: null,
+                  nSegments: null,
+                  practiceSegments: [ ]
+                }
+        );
+        console.log($scope.sng.learningPlanMeta[stnzNo].practiceCharts);
+    };
+    
+    $scope.addSeg = function(stnzNo,level){
+        $scope.song.learnPlan.seg = true;
+//        if($scope.sng.learningPlanMeta[stnzNo].practiceCharts[level].nSegments != 0)
+//            $scope.song.seg = false;
+        $scope.sng.learningPlanMeta[stnzNo].practiceCharts[level].practiceSegments.length = 0;
+        
+        for(i=0;i<$scope.sng.learningPlanMeta[stnzNo].practiceCharts[level].nSegments;i++){
+            $scope.sng.learningPlanMeta[stnzNo].practiceCharts[level].practiceSegments.push(
+                {
+                  idx: i+1, isBlank: false,
+                  sl: null, sb: null,
+                  el: null, eb: null
+                }
+            );
+        }
+        
+    };
+    
+    $scope.change = function() {
+          //$location.path('songs/create');
+          
+        //var fromTrans = document.getElementById("fromTrans"); 
+          //var fromStr = fromTrans.value;
+          //alert(fromTrans.value.charCodeAt(0));
+
+          var toTrans = document.getElementById("toTrans"); 
+          var toStr = toTrans.value;
+          //alert(toTrans.value);
+          //var l = document.getElementsByClassName("trans");
+          var fromS  = pramukhIME.getLanguage();
+          var fromStr = fromS.language;
+          //alert(fromStr)
+          
+          
+          if(fromStr=="english")
+          {
+          pramukhIME.addLanguage(PramukhIndic,toStr);
+          //alert("hello");
+          var list = document.getElementsByClassName("trans");
+          
+          var str = list[0].innerHTML;
+          
+          list[0].innerHTML=pramukhIME.convert(str,fromStr,toStr);
+
+          var str = list[1].innerHTML;
+          //alert("6");
+          list[1].innerHTML=pramukhIME.convert(str,fromStr,toStr);
+          //alert("bye!");
+
+          var i;
+          for (i = 0; i < list.length; i++) {
+              str = list[i].innerHTML;
+              list[i].innerHTML=pramukhIME.convert(str,fromStr,toStr);
+          }
+        }
+        else
+        { //alert("hi");
+          // $location.path('songs/' + response._id);
+          //alert("hello");
+
+          var list = document.getElementsByClassName("trans");
+          /*pramukhIME.addLanguage(PramukhIndic,"Hindi");
+          //pramukhIME.addLanguage(PramukhIndic,"kannada");
+          pramukhIME.enable();
+          s = document.getElementById("first_name").value;
+          s1 = pramukhIME.convert(s,"Hindi","English");
+          pramukhIME.disable();
+          pramukhIME.addLanguage(PramukhIndic,"kannada");
+          document.getElementById("first_name").value= pramukhIME.convert(s1,"English","kannada");
+          pramukhIME.disable();
+          pramukhIME.addLanguage(PramukhIndic,"Hindi");
+          pramukhIME.enable();
+          */
+          var i;
+          for (i = 0; i < list.length; i++) {
+              pramukhIME.addLanguage(PramukhIndic,fromStr);
+              pramukhIME.enable();
+              str = list[i].innerHTML;
+              str = pramukhIME.convert(str,fromStr,"English");
+              pramukhIME.disable();
+          //    alert(str);
+              pramukhIME.addLanguage(PramukhIndic,toStr);
+              list[i].innerHTML=pramukhIME.convert(str,"English",toStr);
+              //pramukhIME.disable();
+          }
+
+        }  
+    };
+                    
+    
     $scope.imgpath = "/img/purandaradaasu.jpe";
-    $scope.audio = ngAudio.load('/audio/Cheerleader.mp3');
+    $scope.hoversnd = "/audio/button-3.mp3";
+    $scope.clicksnd = "/audio/button-4.mp3";
+    $scope.audio = ngAudio.load('http://dl.enjoypur.vc/upload_file/5570/6757/PagalWorld%20-%20Bollywood%20Mp3%20Songs%202016/Sanam%20Re%20(2016)%20Mp3%20Songs/01%20Sanam%20Re%20%28Title%20Song%29%20Arijit%20Singh%20190Kbps.mp3');
 }])
 .config(function($mdThemingProvider) {
   $mdThemingProvider.theme('default')

@@ -5,6 +5,7 @@ var users = require('../../app/controllers/users.server.controller'),
     courses = require('../../app/controllers/courses.server.controller');
 
 module.exports = function(app) {
+	app.post('/yes',courses.csv2json);
     app.route('/api/courses')
         .get(courses.list)
         .post(users.requiresLogin, courses.create);

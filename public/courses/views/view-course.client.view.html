@@ -1,11 +1,11 @@
 
 <div data-ng-controller="CoursesController as cc" data-ng-init="findOne()" id = "course" >
     <md-content class="md-padding"  layout="column">
-		<md-card style="border:3px pink solid;">
+		<md-card>
 			<md-card-title>
 				<md-card-title-media>
 				<div layout="row" layout-align="center">
-				<div class="md-media-lg card-media"> <img id="one" class="md-user" src="pes.jpg"></div>
+				<div class="md-media-lg card-media"> <img id="one" class="md-user" src="/img/pes.png"></div>
 				<md-divider style="padding-left:1px;background-color:white;">	</md-divider>
 				</div>
 				</md-card-title-media>
@@ -31,14 +31,14 @@
 				</span>
 				<span id = "four" class="md-subhead">Bull Temple Road,Bangalore,karnataka</span>
 				<md-divider ></md-divider>
-				<p flex="80"><span style="color:red;">Board</span>:{{course.organization[0].degrees[0].syllabus[0].name}}<br><span style="color:red;">Genre</span>: {{course.organization.degrees[0].syllabus[0].genre}}<br><span style="color:red;">Medium</span>:{{course.organization.degrees[0].syllabus[0].medium}}<br><span style="color:red;">Student</span>:{{course.organization.degrees[0].level}}</p>
+				<p flex="80"><span style="color:red;">Board</span>:{{course.organization.degrees[0].syllabus[0].name}}<br><span style="color:red;">Genre</span>: {{course.organization.degrees[0].syllabus[0].genre}}<br><span style="color:red;">Medium</span>:{{course.organization.degrees[0].syllabus[0].medium}}<br><span style="color:red;">Student</span>:{{course.organization.degrees[0].level}}</p>
 	
 				</md-card-title-text>
 			  
 			</md-card-title>
 		</md-card>
-		<md-card style="border:3px pink solid;">
-				<md-tabs md-dynamic-height md-border-bottom  layout-fill class="md-accent">
+		<md-card>
+				<md-tabs md-dynamic-height md-border-bottom  layout-fill>
 				<md-tab label={{course.organization.degrees[0].syllabus[0].parts[0].name}}>
 					<md-content class="md-padding">
 							<ul  >
@@ -46,7 +46,7 @@
 							<div ng-repeat="music in course.organization.degrees[0].syllabus[0].parts[0].chapters">
 							 <div id ="two" layout="row">
 							 <div flex="5" style="padding-left:15px;padding-top:3px;">{{music.number}}</div>
-							 <div  ng-click="mus = !mus" flex="90" style="background-color:DimGrey;color:white">{{music.name}}</div>
+							 <div  ng-click="mus = !mus" flex="90" style="background-color:DimGrey;color:white;padding:10px;">{{music.name}}</div>
 							 <div flex="5" ng-hide="!mus"><ng-md-icon icon="remove" style="fill:white" size="25"></ng-md-icon></div>
 							 <div flex="5" ng-show="!mus"><ng-md-icon icon="add" style="fill:white" size="25"></ng-md-icon></div>
 							 <div flex="2"><ng-md-icon icon="file_download" style="fill:white" size="25"></ng-md-icon></div>
@@ -70,7 +70,7 @@
 -->
 										<div  id="btn" ng-repeat = "name in procedure.subsections.slice(i,i+4)" layout="row" >
 										 <div   ng-show="showDetails">
-											<md-button  style="width:200px;background-color:Purple;color:white" class="md-raised  md-cornered">{{name.name}}</md-button>
+											<md-button  style="width:200px;background-color:black;color:white" class="md-raised  md-cornered">{{name.name}}</md-button>
 										   </div> 
 										</div>
 										</div>
@@ -140,15 +140,24 @@
 				
 				<md-tab label="PRACTICAL">
         <md-content class="md-padding">
-          <h1 class="md-display-2">Tab Two</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi. Aliquam erat volutpat. Nam placerat, tortor in ultrices porttitor, orci enim rutrum enim, vel tempor sapien arcu a tellus. Vivamus convallis sodales ante varius gravida. Curabitur a purus vel augue ultrices ultricies id a nisl. Nullam malesuada consequat diam, a facilisis tortor volutpat et. Sed urna dolor, aliquet vitae posuere vulputate, euismod ac lorem. Sed felis risus, pulvinar at interdum quis, vehicula sed odio. Phasellus in enim venenatis, iaculis tortor eu, bibendum ante. Donec ac tellus dictum neque volutpat blandit. Praesent efficitur faucibus risus, ac auctor purus porttitor vitae. Phasellus ornare dui nec orci posuere, nec luctus mauris semper.</p>
-          <p>Morbi viverra, ante vel aliquet tincidunt, leo dolor pharetra quam, at semper massa orci nec magna. Donec posuere nec sapien sed laoreet. Etiam cursus nunc in condimentum facilisis. Etiam in tempor tortor. Vivamus faucibus egestas enim, at convallis diam pulvinar vel. Cras ac orci eget nisi maximus cursus. Nunc urna libero, viverra sit amet nisl at, hendrerit tempor turpis. Maecenas facilisis convallis mi vel tempor. Nullam vitae nunc leo. Cras sed nisl consectetur, rhoncus sapien sit amet, tempus sapien.</p>
-          <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+          
+          <h1 class="md-display-2">Learn Songs</h1>
+          <div id="three" ng-repeat="ch in course.organization.degrees[0].syllabus[0].parts[1].chapters"  >
+          
+          	<div >{{ch.name}}</div>
+			<md-button  style="width:100px;margin-left:800px;background-color:black;color:white" class="md-raised  md-cornered">Learn</md-button>
+			
+          </div>
         </md-content>
       </md-tab>
-      <md-tab label="COURSE(16)">
+      <md-tab label="COURSE">
         <md-content class="md-padding">
-          <h1 class="md-display-2">Tab Three</h1>
+          <h1 class="md-display-2">Our Course</h1>
+          <h3> If You Want to Enroll for this Course Please Hit Enroll Button</h3>
+          <div id="three"  >
+          	<div >{{course.organization.name}}</div>
+			<md-button  style="width:100px;margin-left:800px;background-color:black;color:white" class="md-raised  md-cornered">Enroll</md-button>
+          </div>
           <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
         </md-content>
       </md-tab>

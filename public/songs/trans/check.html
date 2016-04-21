@@ -1,0 +1,24 @@
+<html>
+<head>
+    <script type="text/javascript" src="pramukhime.js"></script>
+    <script type="text/javascript" src="pramukhindic.js"></script>
+    <script language="text/javascript" type="text/javascript">
+    function change(){
+	pramukhIME.addLanguage(PramukhIndic,"Hindi");
+	//pramukhIME.addLanguage(PramukhIndic,"Telugu");
+	//pramukhIME.addLanguage(PramukhIndic,"kannada");
+	pramukhIME.enable("first_name");
+	var s = document.getElementById("first_name").value;
+	
+	//document.getElementById("first_name").value= pramukhIME.convert(s,"kannada","Telugu");
+	//document.getElementById("first_name").value= pramukhIME.convert(s,"English","kannada");
+	}
+	
+    </script>
+</head>
+<body>
+    <input type="text" id="first_name">
+    <input type="submit" onclick="change()" value ="submit">
+<h2 id="something">Type in the english text you want to change to hindi.</h2>
+</body>
+</html>

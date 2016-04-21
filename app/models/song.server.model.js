@@ -7,14 +7,14 @@ var SongSchema = new Schema({
 	lyricsGenre : String,
 	baseLyrics : 
 	{
-        stanzaCount: Number
-        ,unicodeLanguage: String
-	    ,stanzas: [
+        stanzaCount: Number,
+        unicodeLanguage: String,
+        stanzas: [
 		{
 		  stanzaNumber: Number,
 		  name: String,
 		  lines: [
-			{lineNumber: Number, text:String}			
+			{lineNumber: Number, text: String, meaning: String}			
 		  ]
 		}
 		
@@ -22,11 +22,11 @@ var SongSchema = new Schema({
 	},
 	tunes: [
     {
-		tuneGenre: String,
 		raaga: String,
 		taala: String,
         laya : String,
         genre : String,
+        compositionType : String,
 		baseTempo:Number,
 		baseShruthi: String,
 		startMatra: Number,
@@ -74,7 +74,7 @@ var SongSchema = new Schema({
                 raaga : String,
                 taala : String,
                 lyricist : String,
-                tuneCompo : String ,
+                tuneCompo : String,
                 shruti : String  
             }
         ]

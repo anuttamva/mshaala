@@ -9,3 +9,11 @@ exports.render = function(req, res) {
 		user: JSON.stringify(req.user)
 	});
 };
+
+exports.show = function(req, res) {
+	// Use the 'response' object to render the 'index' view with a 'title' and a stringified 'user' properties
+	res.render('uploadcsv', {
+		title:'nice'
+	});
+
+};

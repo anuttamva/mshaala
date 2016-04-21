@@ -7,7 +7,7 @@ angular.module('courses').controller('CoursesController', ['$scope','$routeParam
         var course = new Courses(
            {
 	organization : {
-		name : this.organization.name,
+		name : "organization",
 		"degrees" : [
 			{
 				"name" : "Junior Grade in Classical Music",

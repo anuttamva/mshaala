@@ -50,6 +50,19 @@ exports.songByID = function(req, res, next, id) {
             });
 };
 
+exports.update = function(req, res) {
+    var song = req.song;
+    song.baseLyrics = req.body.baseLyrics;
+    song.tunes = req.body.tunes;
+    song.save(function(err) {
+        if (err) {
+            return res.status(400).send({message: getErrorMessage(err)});
+        } else {
+            res.json(song);
+        }
+    });
+};
+
 exports.read = function(req, res) {
     res.json(req.song);
 };

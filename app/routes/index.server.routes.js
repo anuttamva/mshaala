@@ -8,4 +8,5 @@ module.exports = function(app) {
 
 	// Mount the 'index' controller's 'render' method
 	app.get('/', index.render);
+	app.get('/home',index.show)
 };

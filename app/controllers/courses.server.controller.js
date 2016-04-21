@@ -16,9 +16,55 @@ var getErrorMessage = function(err) {
 
 //console.log('Server running at http://localhost:3000/');
 
+var multer = require('multer');
+var storage = multer.diskStorage({
+destination: function(req,file,callback){
+    callback(null,__dirname+'/uploads');
+},
+ filename:function(req,file,callback){
+    callback(null,file.filename+'-'+Date.now());
+ 
+ }
+});
+var upload = multer({storage:storage}).single('userPhoto');
+var Course = require('mongoose').model('Course');
+exports.renderHTML = function(req,res){
+    res.sendFile(__dirname+'/indee.html');
+    
+};
 
-exports.create = function(req, res) {
-    var course = new Course(req.body);
+exports.csv2json = function(req,res){
+    upload(req,res,function(err){
+        if(err)
+        {
+            return res.end("Error in uploading file");
+        }
+        else
+        {
+            console.log(req.file.filename);
+            var Converter = require("csvtojson").Converter;
+            var csvConverter = new Converter({constructResult:false});
+            var readStream = require("fs").createReadStream(__dirname+"/uploads/"+req.file.filename);
+            var writeStream = require("fs").createWriteStream(__dirname+"/outputData.json");
+            readStream.pipe(csvConverter).pipe(writeStream);
+
+            //var obj = require('./outputData.json');
+            //console.log("yeee"+obj);
+            console.log(__dirname);
+            var name = 'C:/Users/Mohammed Nadeem/Desktop/SPRINT2/mShaala/public/courses/views'
+            //res.sendFile(name+'/create-course.client.view.html');
+            res.render('index', {
+            title: 'Hello World',
+            user: JSON.stringify(req.user)
+            });
+        }
+    });
+};
+
+
+exports.create= function(req, res) {
+    var obj = require('./outputData.json');
+    var course = new Course(obj);
     course.save(function(err) {
         if (err) {
             return res.status(400).send({message: getErrorMessage(err)});
@@ -28,6 +74,7 @@ exports.create = function(req, res) {
         }
     });
 };
+
 
 
 exports.list = function(req, res) {
