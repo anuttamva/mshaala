@@ -1,0 +1,538 @@
+<div data-ng-controller="SongsController as sc" data-ng-init="findOne()" id = "song" >
+      <div id="info"  >      
+      <md-card>
+        <div layout = "row">
+          <div flex = "18" >
+            <img ng-src="{{song.imgurl}}" class="compoimg">
+          </div>
+          <div flex layout = "column">
+            <div flex = "5" layout = "row" >
+            <div flex>
+            
+              <md-card-content style="margin:0px;background-color:white; color:rgba(0,0,0,0.75);">
+               <span class="md-headline" >{{ song.title | uppercase}}</span><br/>
+               <label>by Sri {{ song.lyricist | uppercase}}</label> 
+              </md-card-content>
+            
+          </div>
+          <div flex style="background-color:white;margin-top:5px;">
+              <section layout="row" layout-sm="column"  layout-align="end center" layout-wrap>
+                <md-button class="md-fab md-primary" aria-label="Favourite">
+                  <md-tooltip md-direction="bottom">Favourite</md-tooltip>
+                  <md-icon md-svg-icon="icons/ic_favorite_border_white_18px.svg"></md-icon>
+                </md-button>
+                <md-button class="md-fab md-primary"  aria-label="Favourite">
+                  <md-tooltip md-direction="bottom">Favourite</md-tooltip>
+                  <md-icon md-svg-icon="icons/ic_favorite_border_white_18px.svg"></md-icon>
+                </md-button>
+              </section>
+              <!-- <i class="material-icons">favorite</i> -->
+            <!-- enter buttons here -->
+          </div>
+          </div>
+            <md-divider ng-if="!$last" ></md-divider>
+          
+          <div flex ="50" >
+            <!-- <md-card-content style="margin-top:0px;padding-top:0px;padding-bottom:0px;">
+            
+              
+              <p>{{"Tunes        : " + 5 | uppercase}}</p>
+              <p>{{"Language     : " +  song.language | uppercase}}</p>
+              <p>{{"Lyrics Genre : " +  song.lyricsGenre | uppercase}}</p>
+            </md-card-content> -->
+            <md-content style="margin-left:15px;" layout ="row">
+              
+                        <div flex="15">       
+                          <p style="color:red;" >Tunes</p>
+                          <p style="color:red;" >Language</p>
+                          <p style="color:red;">Lyrics Genre</p>
+                        </div>
+                        <div flex="5">
+                          <p style="color:red;">:</p>
+                          <p style="color:red;">:</p>
+                          <p style="color:red;">:</p>
+                        </div>
+                        <div flex="15">
+                          <p class="trans"> {{ song.tunes.length}} </p>
+                          <p class="trans"> {{  song.language | uppercase}}</p>
+                          <p class="trans"> {{   song.lyricsGenre | uppercase}} </p>
+                        </div>
+            </md-content>
+          </div>
+          </div>
+        </div>
+
+      </md-card>
+
+  </div>
+  <div>
+     <form data-ng-submit="change()" novalidate>
+    
+
+
+        <div>
+          <!--input type="text" id="first_name"-->
+
+
+          <input list="fromTrans"  value = "English" id="fromTrans" placeholder="From Language">
+        <datalist id="trans">
+          <option value="kannada">
+           <option value="Hindi">
+            <option value="English">
+              <option value="Bengali">
+        </datalist>
+
+        <input type="submit" value ="submit">
+
+        <input list="toTrans" id="toTrans" placeholder="To language">
+        <datalist id="trans">
+          <option value="kannada">
+           <option value="Hindi">
+            <option value="English">
+              <option value="Bengali">
+        </datalist>
+      
+      <p contenteditable="true" class="trans"> a </p>
+        </div>
+
+        <div data-ng-show="error">
+            <strong data-ng-bind="error"></strong>
+        </div>
+    </form>
+  </div>
+
+   <md-content>
+    <md-tabs md-dynamic-height md-border-bottom md-selected="1">
+      <md-tab label="LYRICS" ng-cloak>
+        <md-content id = "lyrsum">
+          <md-card>
+            <md-card-content>
+              <md-list>
+                <div layout="row" ng-repeat="stanz in  song.baseLyrics.stanzas">
+                  <div flex ="9.5">
+                    <md-toolbar class="md-accent" >
+                      <h3 class="md-toolbar-tools" style="color:white;">{{stanz.stanzaNumber | uppercase}}</h3>
+                    </md-toolbar>
+
+                  </div>
+                  <div flex >
+                    <md-toolbar class = "md-warn md-hue-1" > 
+                      <div class="md-toolbar-tools" >
+                        <h2 class="md-toolbar-tools" style= "color:white;" layout-align="start center"> <span class="trans"> {{stanz.name | uppercase}}</span><span  ng-if="$index > 0"> - {{stanz.stanzaNumber - 1}}</span> </h2>
+                      </div>
+                    </md-toolbar>
+                      <!-- <p style="padding-right:10px;padding-left:15px;">This a popular song written by Sri Purandaradasa in praise of Lord Ganesha</p> -->
+                     
+                      <md-list-item  ng-repeat="line in stanz.lines" >
+                        <md-toolbar class = "md-warn md-hue-3" layout-align="center center" style="border: 1px solid red;margin:5px;" ng-init="mean=false">
+                          <div class="md-toolbar-tools" layout-align= "center center" style="margin:7px;margin-bottom:7px;" >
+                            <md-content class="md-toolbar-tools" layout-align= "center center" style="margin:7px;margin-bottom:7px;">
+                            <p class="trans" style="color:black;">{{line.text}}</p>
+                            <span flex></span>
+                            <md-button class="md-fab md-warn"  aria-label="Assignment" ng-click = "mean = !mean">
+                              <md-tooltip md-direction="left">Meaning</md-tooltip>
+                              <md-icon md-svg-icon="icons/ic_assignment_white_24px.svg" ></md-icon>
+                            </md-button>
+                            </md-content>
+                          </div>
+                          
+                          <div class="md-toolbar-tools" style="border-top: 1px solid red;margin:5px;margin-top:3px;margin-left:0px;" layout-align= "center center" ng-show="mean" >
+                          <md-content class="md-toolbar-tools"  style="background-color:rgb(220,220,220);">
+                            <p class="trans">{{line.meaning}}</p>
+                          </md-content>
+                          </div>
+                        
+                        </md-toolbar>
+                        <!-- <md-content flex  style="border: 1px solid red;margin-top:10px;margin-bottom:20px;">
+                        <div flex class="md-list-item-text">
+                          <div >
+                                <span>{{line.text}}</span>
+                          </div>   
+                        </div> 
+                        </md-content> -->
+                      </md-list-item>
+
+                  </div>
+                  </div>
+                </md-list>  
+              
+            </md-card-content>
+          </md-card>
+        </md-content>
+      </md-tab>
+
+      <md-tab class = "md-primary" label = 'TUNES(05)'>
+          <md-card>
+            <md-card-content>
+              <div layout="row" ng-repeat="tune in  song.tunes">
+                <div flex="9">
+                  <md-toolbar class="md-warn">
+                    <h3 class="md-toolbar-tools" style="color:white;">{{$index+1}}</h3>
+                  </md-toolbar>
+                </div>
+                <div flex ng-init="tune.show=true">       <!-- heeeeeeeeeerrrrrrrrrrrrrrrrrreeeeeeeeeeeeeeeeee -->
+                  <md-toolbar class="md-warn md-hue-1" style="text-align:center;">
+                    <section  class="md-toolbar-tools" style="color:white;">
+                      <span flex></span>
+                      <div style="border-right:1px solid rgb(250,250,250);padding:10px;"> 
+                          <md-icon md-svg-icon="icons/ic_mic_white_24px.svg"></md-icon>
+                          <span>150</span>
+                      </div>  
+                        
+                      <div style="border-right:1px solid rgb(250,250,250);padding:10px;">
+                        <md-icon md-svg-icon="icons/ic_headset_white_24px.svg"></md-icon> 
+                        <span>1,100</span>
+                      </div>
+                      
+                      <div style="border-right:1px solid rgb(250,250,250);padding:10px;">
+                        <md-icon md-svg-icon="icons/ic_mic_white_24px.svg"></md-icon> 
+                        <span>1,800</span>
+                      </div>
+                      
+                      <div style="border-color:rgb(250,250,250);">
+                        <md-button class="md-hue-1 md-warn" ng-click = "tune.show = !tune.show">
+                          <md-icon md-svg-icon="icons/ic_play_circle_outline_white_24px.svg"></md-icon> 
+                          <span style="color:white;">Tune preview</span>
+                        </md-button>
+                      </div>            
+                    </section>
+                  </md-toolbar>
+                <!-- <md-toolbar class = "md-warn md-hue-1" > 
+                    <section class="md-toolbar-tools" layout-align="center center">
+                    <span flex></span>
+                    <button class="md-warn"  aria-label="Assignment" >
+                      <md-tooltip md-direction="left">Meaning</md-tooltip>
+                      <md-icon md-svg-icon="icons/ic_assignment_white_24px.svg" ></md-icon>150
+                    </button>
+                  </section>
+                </md-toolbar> -->
+                
+                <md-card-content>
+                  <div layout="row" style="border:1px solid red;">
+                    <div flex="55">
+                      <md-card-content layout ="row"> 
+                        <div flex="50">       
+                          <p style="color:red;" >Tune composer    </p>
+                          <p style="color:red;" >Genre  </p>
+                          <p style="color:red;">Composition Type    </p>
+                        </div>
+                        <div flex="10">
+                          <p style="color:red;">:</p>
+                          <p style="color:red;">:</p>
+                          <p style="color:red;">:</p>
+                        </div>
+                        <div flex="50">
+                          <p class="trans">{{ tune.tuneComposer}}</p>
+                          <p class="trans"> {{ tune.tuneGenre}}</p>
+                          <p class="trans"> {{ tune.compo_type}} </p>
+                        </div>
+                      </md-card-content>  
+                    </div>
+                    <div flex="5">
+                    </div>    
+                    <div flex="50">
+                      <md-card-content layout="row">
+                        <div flex="35">
+                          <p style="color:red;" >Raaga   </p>
+                          <p style="color:red;" >Taala  </p>
+                          <p style="color:red;">kaala/laya</p>
+                        </div>
+                        <div flex="10">
+                          <p style="color:red;">:</p>
+                          <p style="color:red;">:</p>
+                          <p style="color:red;">:</p>
+                        </div>
+                        <div flex>
+                          <p class="trans"> {{ tune.raaga}} </p>
+                          <p class="trans"> {{ tune.taala}}</p>
+                          <p class="trans"> {{ tune.laya}} </p>
+                        </div>
+                      </md-card-content>
+                    </div>        
+                  </div>
+                </md-card-content >
+                <md-card-content ng-show="tune.show">
+                <md-content >
+                  <div layout="row" ng-repeat="stanza in tune.tuneLyrics.stanzas">
+                    <div flex="9">
+                      <md-toolbar class="md-warn">
+                        <h3 class="md-toolbar-tools" style="color:white;">0{{$index + 1}}</h3>
+                      </md-toolbar>
+                    </div>
+                    <div flex>
+                      <md-toolbar class = "md-warn md-hue-3" > 
+                        <section class="md-toolbar-tools" layout-align="center center">
+                          <h3 class="md-toolbar-tools"><span class="trans">{{stanza.name}}</span></h3>
+                          <span flex></span>
+                          <md-button class="md-primary md-fab" style="color:red;" aria-label="Assignment" >
+                            <md-tooltip md-direction="bottom">Play</md-tooltip>
+                            <md-icon md-svg-icon="icons/ic_play_circle_outline_white_24px.svg" ></md-icon>150
+                          </md-button>
+                        </section>
+                      </md-toolbar>
+                      <md-card-content >
+                        <div layout = "row">
+                            <div flex="9">
+                                <p class="md-toolbar-tools" style="color:white;">1</p>
+                            </div>
+                             <div flex> 
+                            <table class="table" >
+                                <tr>
+                                  <th class="trans" colspan="{{tune.tuneLyrics.ndrutha}}" style = "background:#A9A9A9;width:10px;">laghu</th>
+                                  <th class="trans" colspan="{{tune.tuneLyrics.nlaghu}}" style = "background:#D3D3D3">dhruta</th>
+                                </tr>
+                                <tr rowspan="2">
+                                  <td ng-repeat="beat in stanza.audioMeta[0].beats"  style = "color:red">{{beat.idx}}</td>
+                                </tr>    
+                            </table>
+                             </div> 
+                        </div>  
+                        <div layout = "row" ng-repeat="cycle in stanza.audioMeta">
+                            <div flex = "9">                         
+                                    <p class="md-toolbar-tools" style="color:black;">{{$index + 1}}</p>                                
+                            </div>
+                            <div flex >
+                                <table class="table" >
+                                    <tr><td class="trans" ng-repeat="beat in cycle.beats">{{beat.lyric}}</td></tr>
+                                    <tr><td class="trans" ng-repeat="beat in cycle.beats">{{beat.note}}</td></tr>
+                                </table>
+                            </div>
+                        </div>
+                      </md-card-content>
+                      //add here
+                    </div>
+                  </div>
+                </md-content>
+                <md-content ng-init="show=true">
+                <md-card-content>
+                  <div layout="row">
+                    <div flex="9">
+                      <md-toolbar class="md-warn">
+                        <h3 class="md-toolbar-tools" style="color:white;">02</h3>
+                      </md-toolbar>
+                    </div>
+                    <div flex>
+                      <md-toolbar class = "md-warn md-hue-2" > 
+                        <section class="md-toolbar-tools" layout-align="center center">
+                          <h3 class="md-toolbar-tools" style="color:white;">BACKGROUND MUSIC SCORE</h3>
+                          <span flex></span>
+                          <md-button style="color:white;" aria-label="Expand" ng-click="show = !show">+</md-button>
+                        </section>
+                      </md-toolbar>
+
+                    </div>
+                  </div>
+                </md-card-content>
+                  <md-card-content ng-repeat="bgm in tune.bgms" ng-show="show">
+                    <div layout="row" style="border:1px solid red;height:107px;">
+                      <div flex="18">
+                        <img ng-src="img/purandaradaasu.jpe" style="height:105px;width:100px;">
+                      </div>          
+                      <div flex>
+                        <div layout="column">
+                          <div flex="50" >
+                            <div layout="row" style="margin-top:7px;margin-left:7px;">
+                              <div flex="40">
+                                <div layout="row">
+                                  <div flex="30">
+                                    <p style="color:red;"> Composer </p>                        
+                                  </div>
+                                  <div flex="3">                     
+                                  <p style = "color:red;"> :</p>
+                                  </div>  
+                                  <div flex>
+                                    <p class="trans">{{bgm.composer}}</p>
+                                  </div>
+                                </div>
+                              </div>
+                              <div flex>
+                                <div layout="row">
+                                  <div flex ="20">
+                                    <p style="color:red;"> Instrument</p>                   
+                                  </div>
+                                  <div flex ="3">
+                                    <p style = "color:red;"> :</p>
+                                  </div>
+                                  <p flex>
+                                    <label ng-repeat="t in bgm.tracks">
+                                      <span class="trans">{{t.instrument}}</span><span ng-if ="!$last">,</span>
+                                    </label>
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>  
+                          <!--ng-audio-->
+                          <div flex>
+                            <section layout="row" layout-sm="column" class="md-toolbar-tools" style="background-color:rgb(200,200,200)" layout-align="start center" layout-wrap>
+<!--
+                              <md-button class="md-primary tools"  aria-label="Play">
+                                <md-tooltip md-direction="bottom">Play</md-tooltip>
+                                <md-icon md-svg-icon="icons/ic_skip_previous_black_24px.svg" style="width:30px;height:30px;"></md-icon>
+                              </md-button>                              
+-->
+                               <md-button class="md-primary tools"  aria-label="Play" ng-click='audio.paused ? audio.play() : audio.pause()'>
+                                <md-tooltip md-direction="bottom">Play</md-tooltip>
+                                <md-icon ng-if = "audio.paused" md-svg-icon="icons/ic_play_arrow_black_24px.svg" style="width:40px;height:40px;"></md-icon>
+                                 <md-icon ng-if = "!audio.paused" md-svg-icon="icons/ic_skip_previous_black_24px.svg" style="width:40px;height:40px;"></md-icon>                              
+                               </md-button> 
+<!--                              <button ng-click='audio.paused ? audio.play() : audio.pause()'>Pause</button>-->
+<!--
+                              <md-button class="md-primary  tools"  aria-label="Favourite">
+                                <md-tooltip md-direction="bottom">Favourite</md-tooltip>
+                                <md-icon md-svg-icon="icons/ic_skip_next_black_24px.svg" style="width:30
+px;height:30px;"></md-icon>
+                              </md-button>
+-->
+                              <md-button class="md-primary  tools"  aria-label="Favourite">
+                                <md-tooltip md-direction="bottom">Favourite</md-tooltip>
+                                <md-icon md-svg-icon="icons/ic_repeat_one_black_24px.svg" style="width:30px;height:30px;"></md-icon>
+                              </md-button>
+                              <input type="range" min="0" max="1" step="0.01" ng-model='audio.progress'>
+
+                                <md-button class="md-primary tools"  aria-label="Volume">
+                                <md-tooltip md-direction="bottom">Volume</md-tooltip>
+                                <md-icon md-svg-icon="icons/ic_volume_up_black_24px.svg" style="width:30px;height:30px;"></md-icon>   
+                              </md-button>
+                              <input type="range" min="0" max="1" step="0.01" value = "0.5" ng-model='audio.volume'>
+                             <!--  <div audio options="options" /> -->
+                            </section>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+
+                    <!-- add here -->
+                  </md-card-content>
+                </md-content>
+
+                <md-content ng-init="recr=true">
+                <md-card-content>
+                  <div layout="row">
+                    <div flex="9">
+                      <md-toolbar class="md-warn">
+                        <h3 class="md-toolbar-tools" style="color:white;">03</h3>
+                      </md-toolbar>
+                    </div>
+                    <div flex>
+                      <md-toolbar class = "md-warn md-hue-2" > 
+                        <section class="md-toolbar-tools" layout-align="center center">
+                          <h3 class="md-toolbar-tools" style="color:white;">SONG RECORDINGS (02)</h3>
+                          <span flex></span>
+                          <md-button style="color:white;" aria-label="Expand" ng-click = "recr = !recr">+</md-button>
+                        </section>
+                      </md-toolbar>
+
+                    </div>
+                  </div>
+                </md-card-content>
+
+                  <h4 ng-show="recr">TOP 5 song Recordings</h4>
+                  <md-card-content  ng-repeat="rec in tune.recordings" ng-show="recr">
+                    <div layout="row" style="border:1px solid red;height:102px;">
+                      <div flex = "14">
+                        <img ng-src="img/purandaradaasu.jpe" style="height:100px;width:100px;" />
+                        <!-- add here -->
+                      </div>
+                      <div flex layout="row">
+                        <div id="recrd" flex = "70" >
+                          <div layout = "row" layout-align="center center">
+                            <div flex>
+                              <div layout="row" style="margin-top:7px;margin-left:7px;">
+                                <div flex="30" >
+                                  <p style="color:red;"> Singer</p>
+                                  <p style="color:red;">Raaga</p>
+                                  <p style="color:red;">Taala</p>
+                                </div>
+                                <div flex="10">
+                                  <p style="color:red;">:</p>
+                                  <p style="color:red;">:</p>
+                                  <p style="color:red;">:</p>
+                                </div>
+                                <div flex="60">
+                                  <p class="trans">{{rec.singer}}</p>
+                                  <p class="trans">{{rec.raaga}}</p>
+                                  <p class="trans">{{rec.taala}}</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div flex>
+                              <div layout="row">
+                                <div flex="30">
+                                  <p style="color:red;"> Singer</p>
+                                  <p style="color:red;">Raaga</p>
+                                  <p style="color:red;">Taala</p>
+                                </div>
+                                <div flex="10">
+                                  <p style="color:red;">:</p>
+                                  <p style="color:red;">:</p>
+                                  <p style="color:red;">:</p>
+                                </div>
+                                <div flex="60">
+                                  <p class="trans">{{rec.singer}}</p>
+                                  <p class="trans">{{rec.raaga}}</p>
+                                  <p class="trans">{{rec.taala}}</p>
+                                </div>
+                              </div>
+                            </div>
+                           </div>
+                          </div>
+                          <div flex layout="row">
+                            <div flex = "40">
+                              <div layout="column">
+                                <div flex="70">
+                                  <md-toolbar class = "md-warn md-hue-3" style="background:white;" > 
+                                    <md-icon md-svg-icon="icons/ic_face_black_48px.svg" style="width:60px;height:60px;"></md-icon>
+                                  </md-toolbar>
+                                </div>
+                                <div flex="30">
+                                  <p style="color:red;text-align:center;">120 BPM</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div flex>
+                              <div layout="column">
+                                <div flex="70">
+                                  <md-toolbar class = "md-warn md-hue-3" style="background:white;" > 
+                                    <md-icon md-svg-icon="icons/ic_headset_black_24px.svg" style="width:60px;height:60px;"></md-icon>
+                                  </md-toolbar>
+                                </div>
+                                <div flex="30" >
+                                  <p style="color:red;text-align:center;">3000</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div flex>
+                              <div layout="column">
+                                <div flex="70">
+                                  <md-toolbar class = "md-warn md-hue-3" style="background:white;" > 
+                                    <md-icon md-svg-icon="icons/ic_face_black_48px.svg" style="width:60px;height:60px;"></md-icon>
+                                  </md-toolbar>
+                                </div>
+                                <div flex="30">
+                                  <p style="color:red;text-align:center;">3214</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                      </div>
+                    </div>
+                  </md-card-content>
+                </md-content>
+                  <md-toolbar class = "md-warn md-hue-2" layout-align="center center" style="min-height:50px;"> 
+                    <md-button  style="color:white;width:100%;height:100%"  aria-label="All"><span flex></span><span>View All Song Recordings</span><span flex></span></md-button>
+                  </md-toolbar>
+                  <md-card-content>
+                </md-card-content>
+                </md-card-content>
+                </div>
+              </div>
+            </md-card-content>
+          </md-card>
+      </md-tab>
+    </md-tabs>
+  </md-content>
+</div>

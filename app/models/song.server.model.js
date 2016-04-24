@@ -5,6 +5,7 @@ var SongSchema = new Schema({
     lyricist : String,
 	language : String,
 	lyricsGenre : String,
+    imgurl: String,
 	baseLyrics : 
 	{
         stanzaCount: Number,
@@ -64,8 +65,8 @@ var SongSchema = new Schema({
 			composer: String,
 			tracks: [ 
 			  { trackNumber: Number, instrument: String }
-		
-			]
+			],
+            url: String
 		  }					
 		],
         recordings : [

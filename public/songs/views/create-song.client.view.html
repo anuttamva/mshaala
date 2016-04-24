@@ -6,7 +6,12 @@
               <md-card>
                 <div layout = "row">
                   <div flex = "18" >
-                    <img ng-src="{{imgpath}}" class="compoimg">
+<!--                    <img ng-src="{{imgpath}}" class="compoimg">-->
+                      <md-button ng-click="upload()">
+                          <input type='file' >
+                          upload
+                      </md-button>
+                      
                   </div>
                   <div flex layout = "column">
                     <div flex = "5" layout = "row" >
@@ -342,7 +347,7 @@
                                 </div>  
                                   
                               </md-card-content>
-                              //add here
+                              
                             </div>
                           </div>
                             
@@ -426,39 +431,15 @@
                                   </div>  
                                   <!--ng-audio-->
                                   <div flex>
-                                    <section layout="row" layout-sm="column" class="md-toolbar-tools" style="background-color:rgb(200,200,200)" layout-align="start center" layout-wrap>
+<!--                                    <section layout="row" layout-sm="column" class="md-toolbar-tools" style="background-color:rgb(200,200,200)" layout-align="start center" layout-wrap>-->
+                                        
+                                        <md-input-container>
+                                            <input type="text" placeholder="Song Url" data-ng-model="bgm.url">
+                                        </md-input-container>
         <!--
-                                      <md-button class="md-primary tools"  aria-label="Play">
-                                        <md-tooltip md-direction="bottom">Play</md-tooltip>
-                                        <md-icon md-svg-icon="icons/ic_skip_previous_black_24px.svg" style="width:30px;height:30px;"></md-icon>
-                                      </md-button>                              
-        -->
-                                       <md-button class="md-primary tools"  aria-label="Play" ng-click='audio.paused ? audio.play() : audio.pause()'>
-                                        <md-tooltip md-direction="bottom">Play</md-tooltip>
-                                        <md-icon ng-if = "audio.paused" md-svg-icon="icons/ic_play_arrow_black_24px.svg" style="width:40px;height:40px;"></md-icon>
-                                         <md-icon ng-if = "!audio.paused" md-svg-icon="icons/ic_skip_previous_black_24px.svg" style="width:40px;height:40px;"></md-icon>                              
-                                      </md-button> 
-        <!--                              <button ng-click='audio.paused ? audio.play() : audio.pause()'>Pause</button>-->
-        <!--
-                                      <md-button class="md-primary  tools"  aria-label="Favourite">
-                                        <md-tooltip md-direction="bottom">Favourite</md-tooltip>
-                                        <md-icon md-svg-icon="icons/ic_skip_next_black_24px.svg" style="width:30
-        px;height:30px;"></md-icon>
-                                      </md-button>
-        -->
-                                      <md-button class="md-primary  tools"  aria-label="Favourite">
-                                        <md-tooltip md-direction="bottom">Favourite</md-tooltip>
-                                        <md-icon md-svg-icon="icons/ic_repeat_one_black_24px.svg" style="width:30px;height:30px;"></md-icon>
-                                      </md-button>
-                                      <input type="range" min="0" max="1" step="0.01" ng-model='audio.progress'>
 
-                                        <md-button class="md-primary tools"  aria-label="Volume">
-                                        <md-tooltip md-direction="bottom">Volume</md-tooltip>
-                                        <md-icon md-svg-icon="icons/ic_volume_up_black_24px.svg" style="width:30px;height:30px;"></md-icon>   
-                                      </md-button>
-                                      <input type="range" min="0" max="1" step="0.01" value = "0.5" ng-model='audio.volume'>
-                                     <!--  <div audio options="options" /> -->
-                                    </section>
+                                                                           <!--  <div audio options="options" /> -->
+<!--                                    </section>-->
                                   </div>
                                 </div>
                               </div>

@@ -3,7 +3,7 @@
       <md-card>
         <div layout = "row">
           <div flex = "18" >
-            <img ng-src="sc.imgpath" class="compoimg">
+            <img ng-src="{{song.imgurl}}" class="compoimg">
           </div>
           <div flex layout = "column">
             <div flex = "5" layout = "row" >
@@ -275,17 +275,17 @@
                             <div flex="9">
                                 <p class="md-toolbar-tools" style="color:white;">1</p>
                             </div>
-                            <div flex>
-                            <table class="table">
+                             <div flex> 
+                            <table class="table" >
                                 <tr>
-                                  <th class="trans" colspan="{{tune.tuneLyrics.ndrutha}}" style = "background:#A9A9A9">laghu</th>
-                                  <th class="trans" colspan="{{tune.tuneLyrics.nlaghu}}" style = "background:#D3D3D3">dhrita</th>
+                                  <th class="trans" colspan="{{tune.tuneLyrics.ndrutha}}" style = "background:#A9A9A9;width:10px;">laghu</th>
+                                  <th class="trans" colspan="{{tune.tuneLyrics.nlaghu}}" style = "background:#D3D3D3">dhruta</th>
                                 </tr>
                                 <tr rowspan="2">
                                   <td ng-repeat="beat in stanza.audioMeta[0].beats"  style = "color:red">{{beat.idx}}</td>
                                 </tr>    
                             </table>
-                            </div>
+                             </div> 
                         </div>  
                         <div layout = "row" ng-repeat="cycle in stanza.audioMeta">
                             <div flex = "9">                         
@@ -375,7 +375,7 @@
                                 <md-tooltip md-direction="bottom">Play</md-tooltip>
                                 <md-icon ng-if = "audio.paused" md-svg-icon="icons/ic_play_arrow_black_24px.svg" style="width:40px;height:40px;"></md-icon>
                                  <md-icon ng-if = "!audio.paused" md-svg-icon="icons/ic_skip_previous_black_24px.svg" style="width:40px;height:40px;"></md-icon>                              
-                              </md-button> 
+                               </md-button> 
 <!--                              <button ng-click='audio.paused ? audio.play() : audio.pause()'>Pause</button>-->
 <!--
                               <md-button class="md-primary  tools"  aria-label="Favourite">

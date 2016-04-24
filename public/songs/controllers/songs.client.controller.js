@@ -5,6 +5,7 @@ angular.module('songs').controller('SongsController', ['$scope','$routeParams', 
     
     $scope.create = function() {
         var song = new Songs($scope.sng);
+//        console.log(song.title);
         song.$save(function(response) {
             $location.path('songs/' + response._id);
         }, function(errorResponse) {
@@ -17,6 +18,7 @@ angular.module('songs').controller('SongsController', ['$scope','$routeParams', 
                     lyricist : this.lyricist,
                     language : this.language,
                     lyricsGenre : this.lyricsGenre,
+                    imgurl : "/img/" + this.title,
                     baseLyrics : 
                     {
                         stanzaCount: 0,
@@ -24,8 +26,7 @@ angular.module('songs').controller('SongsController', ['$scope','$routeParams', 
                         stanzas: [
                         ]
                     },
-                    tunes: [
-                    ],
+                    tunes: [ ],
                   learningPlanMeta: [
                     
                   ]
@@ -36,10 +37,21 @@ angular.module('songs').controller('SongsController', ['$scope','$routeParams', 
         $scope.songs = Songs.query();
     };
     $scope.findOne = function() {
-        $scope.song = Songs.get({
+        /*$scope.song = */Songs.get({
             songId: $routeParams.songId
+        }).$promise.then(function(songaud){
+            $scope.song = songaud;
+//            console.log("in only song : ",song);
+//            console.log("in only songaud : ",songaud);
+//            console.log("in $scope.song : ",$scope.song.tunes[0].bgms[0]);
+            $scope.audio = ngAudio.load($scope.song.tunes[0].bgms[0].url);
+    //        $scope.audio=ngAudio.load("/audio/S Janaki - Sri gananatha.mp3");
+//            console.log("scope audio ",$scope.audio);
         });
     };
+
+
+
     $scope.getImageClass = function(){
         return {compoimg: true};
     };
@@ -49,8 +61,7 @@ angular.module('songs').controller('SongsController', ['$scope','$routeParams', 
         $scope.sng.baseLyrics.stanzas.push({
                   stanzaNumber: $scope.sng.baseLyrics.stanzaCount,
                   name: "",
-                  lines: [
-                  ]
+                  lines: []
                 });
     };
     $scope.addLine = function(stzNo){
@@ -115,7 +126,7 @@ angular.module('songs').controller('SongsController', ['$scope','$routeParams', 
             }
         );
         for(i=0;i<$scope.sng.tunes[tuneNo].tuneLyrics.beatsPerCycle;i++){
-            console.log(i);
+//            console.log(i);
             $scope.sng.tunes[tuneNo].tuneLyrics.stanzas[stzNo].audioMeta[$scope.sng.tunes[tuneNo].tuneLyrics.stanzas[stzNo].audioMeta.length-1].beats.push(
                 {
                   idx : i+1, 
@@ -126,19 +137,24 @@ angular.module('songs').controller('SongsController', ['$scope','$routeParams', 
         }
     };
     
+//    $scope.audio;// = ngAudio.load($scope.s);
     $scope.addBgm = function(tuneNo){
         $scope.sng.tunes[tuneNo].bgms.push(
           {
             composer: "",
-            tracks: [ ]
+            tracks: [ ],
+            url : ""
           }
         );
+        
     };
     
     $scope.addBgmInst = function(tuneNo,bgmNo){
         $scope.sng.tunes[tuneNo].bgms[bgmNo].tracks.push(
             { trackNumber: $scope.sng.tunes[tuneNo].bgms[bgmNo].tracks.length+1, instrument: "" }
+            
         );
+//      ;
     };
     $scope.addRec = function(tuneNo){
         $scope.song.newTune.newRec = true;
@@ -166,7 +182,7 @@ angular.module('songs').controller('SongsController', ['$scope','$routeParams', 
                 }
             );
         }
-            console.log("dfdf");
+        console.log("dfdf");
     }
     
     $scope.addNewLevel = function(stnzNo){
@@ -202,82 +218,35 @@ angular.module('songs').controller('SongsController', ['$scope','$routeParams', 
         
     };
     
-    $scope.change = function() {
-          //$location.path('songs/create');
-          
-        //var fromTrans = document.getElementById("fromTrans"); 
-          //var fromStr = fromTrans.value;
-          //alert(fromTrans.value.charCodeAt(0));
-
-          var toTrans = document.getElementById("toTrans"); 
-          var toStr = toTrans.value;
-          //alert(toTrans.value);
-          //var l = document.getElementsByClassName("trans");
-          var fromS  = pramukhIME.getLanguage();
-          var fromStr = fromS.language;
-          //alert(fromStr)
-          
-          
-          if(fromStr=="english")
-          {
-          pramukhIME.addLanguage(PramukhIndic,toStr);
-          //alert("hello");
-          var list = document.getElementsByClassName("trans");
-          
-          var str = list[0].innerHTML;
-          
-          list[0].innerHTML=pramukhIME.convert(str,fromStr,toStr);
-
-          var str = list[1].innerHTML;
-          //alert("6");
-          list[1].innerHTML=pramukhIME.convert(str,fromStr,toStr);
-          //alert("bye!");
-
-          var i;
-          for (i = 0; i < list.length; i++) {
-              str = list[i].innerHTML;
-              list[i].innerHTML=pramukhIME.convert(str,fromStr,toStr);
-          }
-        }
-        else
-        { //alert("hi");
-          // $location.path('songs/' + response._id);
-          //alert("hello");
-
-          var list = document.getElementsByClassName("trans");
-          /*pramukhIME.addLanguage(PramukhIndic,"Hindi");
-          //pramukhIME.addLanguage(PramukhIndic,"kannada");
-          pramukhIME.enable();
-          s = document.getElementById("first_name").value;
-          s1 = pramukhIME.convert(s,"Hindi","English");
-          pramukhIME.disable();
-          pramukhIME.addLanguage(PramukhIndic,"kannada");
-          document.getElementById("first_name").value= pramukhIME.convert(s1,"English","kannada");
-          pramukhIME.disable();
-          pramukhIME.addLanguage(PramukhIndic,"Hindi");
-          pramukhIME.enable();
-          */
-          var i;
-          for (i = 0; i < list.length; i++) {
-              pramukhIME.addLanguage(PramukhIndic,fromStr);
-              pramukhIME.enable();
-              str = list[i].innerHTML;
-              str = pramukhIME.convert(str,fromStr,"English");
-              pramukhIME.disable();
-          //    alert(str);
-              pramukhIME.addLanguage(PramukhIndic,toStr);
-              list[i].innerHTML=pramukhIME.convert(str,"English",toStr);
-              //pramukhIME.disable();
-          }
-
-        }  
-    };
-                    
+//    $scope.validate = function(){
+//        levels={};
+//        for (i=0;i<$scope.sng.learningPlanMeta.length;i++){
+//             a=[]
+//             for (j=0;j<$scope.sng.learningPlanMeta[i].practiceCharts.length;j++){
+//                    a.push($scope.sng.learningPlanMeta[i].practiceCharts.level);
+//        }
+//        levels[$scope.sng.learningPlanMeta[i].stanzaIdx]=a;
+//            
+//             })
+//        for(i=0;i<a.length-1;i++)
+//            {
+//                if(a[i]!=a[i+1])
+//                    {
+//                        return false;
+//                    }
+//            }
+//        return true;
+//        
+//    };
+    
+//    $scope.upload = function(){
+//          
+//    };
     
     $scope.imgpath = "/img/purandaradaasu.jpe";
     $scope.hoversnd = "/audio/button-3.mp3";
     $scope.clicksnd = "/audio/button-4.mp3";
-    $scope.audio = ngAudio.load('http://dl.enjoypur.vc/upload_file/5570/6757/PagalWorld%20-%20Bollywood%20Mp3%20Songs%202016/Sanam%20Re%20(2016)%20Mp3%20Songs/01%20Sanam%20Re%20%28Title%20Song%29%20Arijit%20Singh%20190Kbps.mp3');
+//    $scope.sng.tunes[0].bgms[0].url
 }])
 .config(function($mdThemingProvider) {
   $mdThemingProvider.theme('default')

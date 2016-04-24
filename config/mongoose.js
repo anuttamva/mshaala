@@ -14,6 +14,7 @@ module.exports = function() {
 	require('../app/models/user.server.model');
 	require('../app/models/song.server.model');  
     require('../app/models/course.server.model');
+    require('../app/models/enroll.server.model');
     // Return the Mongoose connection instance
 	return db;
 };
